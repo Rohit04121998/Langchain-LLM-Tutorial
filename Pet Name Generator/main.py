@@ -1,7 +1,7 @@
 import langchain_helper as lch
 import streamlit as st
 
-st.title("Pet Name Generator")
+st.title("🐶 Pet Name Generator")
 
 animal_type = st.sidebar.selectbox(
     "What is your pet?", ("Dog", "Cat", "Fish", "Bird", "Hamster")
@@ -24,7 +24,7 @@ with st.sidebar:
         "OpenAI API Key", key="langchain_search_api_key_openai", type="password"
     )
     "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
-    "[View the source code](https://github.com/rishabkumar7/pets-name-langchain/tree/main)"
+    "[View the source code](https://github.com/Rohit04121998/langchain-llm-tutorial/tree/main/Pet%20Name%20Generator)"
 
 if pet_color:
     if not openai_api_key:
