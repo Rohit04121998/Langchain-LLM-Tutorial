@@ -15,7 +15,7 @@ AI Generates cool pet names for you!
 - 
 # 2. YouTube Assistant
 
-![YouTube Assistant App](/images/YouTube-Assistant.png)
+![YouTube Assistant App](/images/Youtube-Assistant.png)
 
 ## Running it locally
 
