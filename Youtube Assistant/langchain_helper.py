@@ -10,29 +10,35 @@ from dotenv import load_dotenv
 load_dotenv()
 embeddings = OpenAIEmbeddings()
 
-video_url = "https://www.youtube.com/watch?v=IPrO2ZHQ3mM"
+
+load_dotenv()
+embeddings = OpenAIEmbeddings()
 
 
-def create_vector_db_from_youtube_url(video_url) -> FAISS:
+def create_db_from_youtube_video_url(video_url: str) -> FAISS:
     loader = YoutubeLoader.from_youtube_url(video_url)
     transcript = loader.load()
 
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=100, chunk_overlap=100)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
     docs = text_splitter.split_documents(transcript)
 
     db = FAISS.from_documents(docs, embeddings)
-
     return db
 
 
-def get_response_from_querry(db, querry, k=4):
-    # text_davinci can handle 4097 tokens
-    docs = db.similarity_search(querry, k=k)
+def get_response_from_query(db, query, k=4):
+    """
+    gpt-3.5-turbo-instruct can handle up to 4096 tokens. Setting the chunksize to 1000 and k to 4 maximizes
+    the number of tokens to analyze.
+    """
+
+    docs = db.similarity_search(query, k=k)
     docs_page_content = " ".join([d.page_content for d in docs])
 
-    llm = OpenAI(model="text-davinci-003")
+    llm = OpenAI(model_name="gpt-3.5-turbo-instruct")
+
     prompt = PromptTemplate(
-        input_variable=["question", "docs"],
+        input_variables=["question", "docs"],
         template="""
         You are a helpful assistant that that can answer questions about youtube videos 
         based on the video's transcript.

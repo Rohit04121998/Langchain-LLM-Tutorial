@@ -15,11 +15,11 @@ with st.sidebar:
         openai_api_key = st.sidebar.text_input(
             label="OpenAI API Key",
             key="langchain_search_api_key_openai",
-            max_chars=50,
+            max_chars=60,
             type="password",
         )
         "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
-        "[View the source code](https://github.com/rishabkumar7/pets-name-langchain/tree/main)"
+        "[View the source code](https://github.com/Rohit04121998/langchain-llm-tutorial/tree/main/Youtube%20Assistant)"
         submit_button = st.form_submit_button(label="Submit")
 
 if query and youtube_url:
