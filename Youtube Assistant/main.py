@@ -10,7 +10,7 @@ with st.sidebar:
             label="What is the YouTube video URL?", max_chars=50
         )
         query = st.sidebar.text_area(
-            label="Ask me about the video?", max_chars=50, key="query"
+            label="Ask me about the video.", max_chars=50, key="query"
         )
         openai_api_key = st.sidebar.text_input(
             label="OpenAI API Key",
