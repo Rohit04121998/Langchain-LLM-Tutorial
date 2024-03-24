@@ -12,7 +12,7 @@ AI Generates cool pet names for you!
 
 - [LangChain](https://python.langchain.com/docs/get_started/introduction.html)
 - [Streamlit](https://streamlit.io/)
-- 
+  
 # 2. YouTube Assistant
 
 ![YouTube Assistant App](/images/Youtube-Assistant.png)
